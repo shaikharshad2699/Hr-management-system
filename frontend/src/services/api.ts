@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { STORAGE_KEYS } from '@/constants';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const rawApiUrl = import.meta.env.VITE_API_URL?.trim();
+
+if (!rawApiUrl) {
+  throw new Error('VITE_API_URL is not defined. Set it in the frontend environment configuration.');
+}
+
+const API_BASE_URL = rawApiUrl.replace(/\/+$/, '');
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
