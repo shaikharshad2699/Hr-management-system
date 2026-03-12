@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: #000;
+      font-family: Arial, "Arial MT", sans-serif;
+      font-size: 11pt;
+      line-height: 1.52;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      height: 244mm;
+      min-height: 244mm;
+      position: relative;
+      padding-bottom: 31mm;
+      overflow: hidden;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .page-break { page-break-after: always; }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10mm;
+    }
+
+    .header-logo-only {
+      margin-bottom: 6mm;
+    }
+
+    .logo {
+      width: 108px;
+      height: auto;
+      display: block;
+    }
+
+    .date {
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .recipient {
+      margin-left: 8pt;
+      margin-bottom: 5mm;
+      font-weight: 700;
+    }
+
+    .name-uppercase {
+      text-transform: uppercase;
+    }
+
+    .location {
+      font-weight: 700;
+      margin-top: 1mm;
+    }
+
+    .title {
+      text-align: center;
+      font-weight: 700;
+      margin: 3mm 0 7mm;
+    }
+
+    p {
+      margin: 0 0 2mm 0;
+      text-align: justify;
+    }
+
+    .indent {
+      margin-left: 8pt;
+      margin-right: 6pt;
+    }
+
+    .section-title {
+      text-align: center;
+      font-weight: 700;
+      margin: 3mm 0 5mm;
+    }
+
+    .bulleted {
+      margin-left: 43pt;
+      margin-right: 8pt;
+      text-indent: -17pt;
+    }
+
+    .signature {
+      margin-left: 8pt;
+      margin-top: 6mm;
+      line-height: 1.5;
+    }
+
+    .sign-name {
+      margin-left: 20pt;
+      font-weight: 700;
+      margin-top: 12mm;
+    }
+
+    .sign-role {
+      margin-left: 8pt;
+      margin-top: 1mm;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.6mm 0 2.2mm;
+      font-size: 11pt;
+      line-height: 1.25;
+    }
+
+    table, th, td {
+      border: 1px solid #000;
+    }
+
+    th, td {
+      padding: 2mm 2.5mm;
+      vertical-align: middle;
+    }
+
+    th {
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .salary-col {
+      width: 52%;
+    }
+
+    .money-col {
+      width: 24%;
+      text-align: center;
+    }
+
+    .notes p {
+      margin-left: 43pt;
+      margin-right: 8pt;
+      text-indent: -17pt;
+    }
+
+    .footer-box {
+      position: absolute;
+      bottom: 3mm;
+      left: 0;
+      right: 0;
+      text-align: left;
+      color: #000;
+      font-weight: 400;
+      line-height: 1.2;
+      font-size: 11pt;
+    }
+
+    .accept-name {
+      color: #000;
+      font-weight: 700;
+      margin-bottom: 1mm;
+    }
+
+    .accept-name strong {
+      background: #fff59d;
+      padding: 0 1px;
+    }
+
+    .accept-name .line {
+      display: inline-block;
+      min-width: 190px;
+      border-bottom: 1px solid #000;
+      height: 0.9em;
+      vertical-align: bottom;
+      margin-left: 2mm;
+    }
+
+    .accept-text {
+      color: #000;
+      font-weight: 400;
+      margin-bottom: 1.5mm;
+    }
+
+    .contact {
+      margin-top: 0.6mm;
+      font-weight: 400;
+      color: #000;
+    }
+
+    .address-line {
+      color: #6aa84f;
+    }
+
+    .contact a {
+      color: #0563c1;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <section class="page page-break">
+    <div class="header">
+      <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo">
+      <div class="date">{{currentDate}}</div>
+    </div>
+
+    <div class="recipient">
+      <div class="name-uppercase">{{employeeName}}</div>
+      <div class="location">{{location}}</div>
+    </div>
+
+    <div class="title">Offer Letter</div>
+
+    <p class="indent">We are pleased to extend an offer of employment to you for the position of <strong>{{designation}}</strong> at <strong>{{companyName}}</strong>. This is a permanent full-time position and you will be based at our corporate office in {{location}}.</p>
+
+    <p class="indent">The 'Annual Total Employment Cost' offered to you for the position is <strong>{{annualSalary}}/- Per Annum</strong> ({{salaryInWords}}). The detailed breakdown of the offer and an overview of the terms and conditions are mentioned in</p>
+
+    <div class="section-title">Annexure - I.</div>
+
+    <p class="indent">The allowances, benefits, and other terms and conditions of your employment will be as per the company policies as applicable from time to time.</p>
+    <p class="indent">We welcome you to join us, and the detailed appointment letter will be given to you within 1 month of your joining the services of the company.</p>
+    <p class="indent">You will be required to abide by the terms and conditions put forth in the said employment letter.</p>
+    <p class="indent">We welcome you to the {{companyName}} family and hope it will be the beginning of a long and mutually beneficial association.</p>
+    <p class="indent">Kindly acknowledge the receipt of the offer as an acceptance.</p>
+
+    <div class="signature">
+      <p>Yours sincerely,</p>
+      <p>For {{companyName}}</p>
+    </div>
+
+    <p class="sign-name">{{hrName}}</p>
+    <p class="sign-role">Head - Human Capital</p>
+
+    <div class="footer-box">
+      <div class="accept-name"><strong class="name-uppercase">{{employeeName}}</strong><span class="line"></span></div>
+      <div class="accept-text">The undersigned hereby accept the above mentioned terms and conditions.</div>
+      <div class="address-line">Pokale-Mala, Kondhwa Khurd, Behind Welcome Hall, Pune 411048</div>
+      <div class="contact">Ph: 09028822391 | e-mail: <a href="mailto:info@broadstairs.in">info@broadstairs.in</a> | Website: <a href="https://www.broadstairs.in">www.broadstairs.in</a></div>
+    </div>
+  </section>
+
+  <section class="page page-break">
+    <div class="header header-logo-only">
+      <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo">
+    </div>
+
+    <div class="section-title">ANNEXURE - I TERMS &amp; CONDITIONS</div>
+
+    <p class="bulleted"><strong>Category:</strong> {{designation}}</p>
+    <p class="bulleted"><strong>Employment:</strong> Your employment is subject to satisfactory completion of your probation period and shall continue until your retirement age or until termination. You will be employed at our corporate office in {{location}}.</p>
+    <p class="bulleted"><strong>Probationary Period:</strong> Your probationary period will be for three months, and may be extended by the management in its discretion. You will be duly notified of any such extension.</p>
+    <p class="bulleted"><strong>Working Days/Hours:</strong> Your total working days will be as per the company policy, and it may change from time to time. At present, you will be required to work from Monday to Friday. This entails a 45-hour work week. Specific working hours will be determined by mutual understanding. You may be required to work outside the official hours depending upon the urgency, from time to time. No overtime payment or compensation leave will be granted.</p>
+    <p class="bulleted"><strong>Leaves:</strong> You will be permitted to take 18 working days as leave as per company policies. These will accrue as 1.5 days per month of work completed. Any additional leaves taken will be subject to the company's policies. Any leaves taken should be communicated in writing to the management.</p>
+    <p class="bulleted"><strong>Tax Liability:</strong> You will be responsible for all tax liabilities (Income Tax, Employment tax, etc.) arising out of payment under your employment with the company. Please provide your PAN details and investment declaration to avail income tax exemption wherever applicable.</p>
+
+    <div class="footer-box">
+      <div class="accept-name"><strong class="name-uppercase">{{employeeName}}</strong><span class="line"></span></div>
+      <div class="accept-text">The undersigned hereby accept the above mentioned terms and conditions.</div>
+      <div class="address-line">Pokale-Mala, Kondhwa Khurd, Behind Welcome Hall, Pune 411048</div>
+      <div class="contact">Ph: 09028822391 | e-mail: <a href="mailto:info@broadstairs.in">info@broadstairs.in</a> | Website: <a href="https://www.broadstairs.in">www.broadstairs.in</a></div>
+    </div>
+  </section>
+
+  <section class="page page-break">
+    <div class="header header-logo-only">
+      <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo">
+    </div>
+
+    <p class="bulleted"><strong>Remuneration:</strong> Your total fixed pay will be {{annualSalary}}/- per annum (post-completion of the probationary period), comprising the following components:</p>
+
+    <table>
+      <tbody><tr>
+        <th class="salary-col">SALARY</th>
+        <th class="money-col">Rs (Monthly)</th>
+        <th class="money-col">Rs (Yearly)</th>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td class="money-col">{{monthlySalary}}</td>
+        <td class="money-col">{{annualSalary}}</td>
+      </tr>
+      <tr>
+        <td>Basic Salary</td>
+        <td class="money-col"></td>
+        <td class="money-col">{{basicYearly}}</td>
+      </tr>
+      <tr>
+        <td>House Rent Allowance</td>
+        <td class="money-col"></td>
+        <td class="money-col">{{hraYearly}}</td>
+      </tr>
+      <tr>
+        <td>Conveyance</td>
+        <td class="money-col"></td>
+        <td class="money-col">{{conveyanceYearly}}</td>
+      </tr>
+      <tr>
+        <td>Medical Allowance</td>
+        <td class="money-col"></td>
+        <td class="money-col">{{medicalYearly}}</td>
+      </tr>
+      <tr>
+        <td>Variable Allowance</td>
+        <td class="money-col"></td>
+        <td class="money-col">{{variableYearly}}</td>
+      </tr>
+      <tr>
+        <td>Personal Allowance</td>
+        <td class="money-col"></td>
+        <td class="money-col">{{personalYearly}}</td>
+      </tr>
+      <tr>
+        <th colspan="3">DEDUCTIONS</th>
+      </tr>
+      <tr>
+        <td>Professional Tax</td>
+        <td class="money-col">Per Regulations</td>
+        <td class="money-col">Per Regulations</td>
+      </tr>
+      <tr>
+        <td>Employee Contribution to PF</td>
+        <td class="money-col">NA</td>
+        <td class="money-col">NA</td>
+      </tr>
+    </tbody></table>
+
+    <div class="notes">
+      <p>Income Tax and other tax deductions will depend on your declaration of investment and will be deducted at source as per applicable laws, government policies, and the prevailing rate.</p>
+      <p>Basic salary will be used to calculate benefits such as retirement benefits. Your total remuneration will be payable in twelve equal monthly instalments.</p>
+      <p>Another special allowance is payable only if your employment with the company continues for 1 year. If a resignation or termination notice is given before the end of this period, this allowance will be forfeited.</p>
+    </div>
+
+    <div class="footer-box">
+      <div class="accept-name"><strong class="name-uppercase">{{employeeName}}</strong><span class="line"></span></div>
+      <div class="accept-text">The undersigned hereby accept the above mentioned terms and conditions.</div>
+      <div class="address-line">Pokale-Mala, Kondhwa Khurd, Behind Welcome Hall, Pune 411048</div>
+      <div class="contact">Ph: 09028822391 | e-mail: <a href="mailto:info@broadstairs.in">info@broadstairs.in</a> | Website: <a href="https://www.broadstairs.in">www.broadstairs.in</a></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="header header-logo-only">
+      <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo">
+    </div>
+
+    <p class="bulleted"><strong>Notice Period for Termination:</strong> During your probationary period, either party can terminate the employment by giving the other party a one-week notice or payment instead of a Notice. After the probationary period, the company can terminate the employment by giving the employee a one-month written notice or payment instead of notice. In the event of a resignation, the employee must give a month's written notice. The final notice period to be served out will be at the discretion of the company for a maximum duration of one month, and the payment will be made based on the finally served duration.</p>
+
+    <p class="bulleted"><strong>Post-Termination Restriction:</strong> You agree not to directly or indirectly engage in employment with any of our clients for 1 year from your date of termination. You further agree not to recruit additional employees of the company for 1 year from the date of your termination.</p>
+
+    <p class="bulleted"><strong>Outside Employment/Activities:</strong> You will not undertake outside employment or activities with or without remuneration. If your outside activity, if any, is not approved by the management and you decide to engage in the activity, your employment may be terminated without any notice or compensation. Any work done during your tenure at the firm will be the property of {{companyName}}. Intellectual property for the same will belong to {{companyName}} unless otherwise approved by the management.</p>
+
+    <p class="bulleted"><strong>Confidentiality:</strong> You shall keep secret and shall not at any time (whether during or after the period of your employment) use your own or advantage, or reveal to any person, firm, or company, any of the trade secrets, business methods, client lists, employees, contractors or other information which you knew or ought reasonably to have known to be confidential concerning the business or affairs of the company or any of their related companies or any of their clients.</p>
+
+    <p class="bulleted" style="text-indent: 18pt;">Your employment terms should be treated with the strictest confidence. Please sign and return the enclosed duplicate as you accept the offer. This offer of employment is valid until {{offerValidUntil}}.</p>
+
+    <div class="footer-box">
+      <div class="accept-name"><strong class="name-uppercase">{{employeeName}}</strong><span class="line"></span></div>
+      <div class="accept-text">The undersigned hereby accept the above mentioned terms and conditions.</div>
+      <div class="address-line">Pokale-Mala, Kondhwa Khurd, Behind Welcome Hall, Pune 411048</div>
+      <div class="contact">Ph: 09028822391 | e-mail: <a href="mailto:info@broadstairs.in">info@broadstairs.in</a> | Website: <a href="https://www.broadstairs.in">www.broadstairs.in</a></div>
+    </div>
+  </section>
+
+
+</body></html>

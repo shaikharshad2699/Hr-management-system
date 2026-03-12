@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-[#f4f5f1] text-[#2f3733] antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(44, 127, 108, 0.09), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(125, 191, 174, 0.08), transparent 26%);
+    background-attachment: fixed;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(44, 127, 108, 0.18);
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/70 bg-white/90 backdrop-blur;
+    box-shadow: 0 20px 45px -28px rgba(18, 38, 31, 0.34);
+  }
+  
+  .btn-primary {
+    @apply rounded-lg bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700;
+  }
+  
+  .btn-secondary {
+    @apply rounded-lg bg-gray-100 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-200;
+  }
+
+  .page-shell {
+    @apply space-y-6;
+  }
+
+  .panel-grid {
+    @apply grid grid-cols-1 gap-4 sm:gap-6;
+  }
+
+  .responsive-tabs {
+    @apply flex gap-2 overflow-x-auto pb-2;
+    scrollbar-width: none;
+  }
+
+  .responsive-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .table-scroll {
+    @apply -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0;
+  }
+
+  .glass-panel {
+    @apply rounded-2xl border border-white/70 bg-white/82 backdrop-blur;
+    box-shadow: 0 20px 45px -28px rgba(18, 38, 31, 0.34);
+  }
+}

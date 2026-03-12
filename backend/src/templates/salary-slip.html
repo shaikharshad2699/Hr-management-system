@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8e8e8;
+            padding: 40px 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 40px;
+        }
+        
+        .logo-section {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: auto;
+        }
+        
+        .title {
+            text-align: center;
+            color: #0891b2;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-decoration: underline;
+        }
+        
+        .company-info {
+            color: #0891b2;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .company-info div {
+            margin: 2px 0;
+        }
+        
+        .section-title {
+            color: #0891b2;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+        }
+        
+        .employee-details {
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin: 5px 0;
+        }
+        
+        .detail-label {
+            width: 120px;
+            color: #333;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #333;
+        }
+        
+        .annexure-title {
+            color: #0891b2;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+        
+        table, th, td {
+            border: 1px solid #0891b2;
+        }
+        
+        th {
+            background: #0891b2;
+            color: white;
+            padding: 8px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 8px;
+            color: #333;
+        }
+        
+        .amount-col {
+            text-align: right;
+        }
+        
+        .total-row {
+            background: #e0f2f7;
+            font-weight: 600;
+        }
+        
+        .net-amount {
+            background: #0891b2;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .bank-section {
+            margin-top: 20px;
+        }
+        
+        .bank-title {
+            color: #0891b2;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .bank-details {
+            font-size: 12px;
+        }
+        
+        .bank-row {
+            display: flex;
+            margin: 5px 0;
+        }
+        
+        .bank-label {
+            width: 150px;
+            color: #333;
+        }
+        
+        .bank-value {
+            flex: 1;
+            color: #333;
+        }
+        
+        .note {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #666;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo" />
+        </div>
+        
+        <div class="title">Employee Payslip Record</div>
+        
+        <div class="company-info">
+            <div>BROADSTAIRS IT SOLUTIONS PVT LTD</div>
+            <div>Kondhwa, Pune</div>
+            <div>Phone Number: +91-9028822391</div>
+            <div>Website: http://broadstairs.in/</div>
+        </div>
+        
+        <div class="section-title">Employee Details:</div>
+        <div class="employee-details">
+            <div class="detail-row">
+                <div class="detail-label">Employee Name:</div>
+                <div class="detail-value">{{employeeName}}</div>
+                <div class="detail-label" style="margin-left: 20px;">Designation:</div>
+                <div class="detail-value">{{designation}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Emp Id:</div>
+                <div class="detail-value">{{employeeId}}</div>
+                <div class="detail-label" style="margin-left: 20px;">Payable Month:</div>
+                <div class="detail-value">{{currentDate}}</div>
+            </div>
+        </div>
+        
+        <div class="annexure-title">Annexure A:</div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="amount-col">Earnings</th>
+                    <th class="amount-col">Deductions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic Salary</td>
+                    <td class="amount-col">{{basicMonthly}}</td>
+                    <td class="amount-col"></td>
+                </tr>
+                <tr>
+                    <td>House Rent Allowance</td>
+                    <td class="amount-col">{{hraMonthly}}</td>
+                    <td class="amount-col"></td>
+                </tr>
+                <tr>
+                    <td>Conveyance</td>
+                    <td class="amount-col">{{conveyanceMonthly}}</td>
+                    <td class="amount-col"></td>
+                </tr>
+                <tr>
+                    <td>Medical Allowance</td>
+                    <td class="amount-col">{{medicalMonthly}}</td>
+                    <td class="amount-col"></td>
+                </tr>
+                <tr>
+                    <td>Variable Allowance</td>
+                    <td class="amount-col">{{variableMonthly}}</td>
+                    <td class="amount-col"></td>
+                </tr>
+                <tr>
+                    <td>Personal Allowance</td>
+                    <td class="amount-col">{{personalMonthly}}</td>
+                    <td class="amount-col"></td>
+                </tr>
+                <tr>
+                    <td>Professional Tax & TDS</td>
+                    <td class="amount-col"></td>
+                    <td class="amount-col">2,250.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Gross Total</td>
+                    <td class="amount-col">{{monthlySalary}}</td>
+                    <td class="amount-col">2,250.00</td>
+                </tr>
+                <tr class="net-amount">
+                    <td>Net Amount</td>
+                    <td class="amount-col" colspan="2">{{monthlySalary}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="bank-section">
+            <div class="bank-title">Bank Details:</div>
+            <div class="bank-details">
+                <div class="bank-row">
+                    <div class="bank-label">Bank Name:</div>
+                    <div class="bank-value">Axis Bank</div>
+                </div>
+                <div class="bank-row">
+                    <div class="bank-label">Holder Name:</div>
+                    <div class="bank-value">{{employeeName}}</div>
+                </div>
+                <div class="bank-row">
+                    <div class="bank-label">Account Number:</div>
+                    <div class="bank-value">9250100127964482</div>
+                </div>
+                <div class="bank-row">
+                    <div class="bank-label">IFSC:</div>
+                    <div class="bank-value">UTIB0005221</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="note">
+            NOTE: This is a digitally signed document, do not need any signed for authorized signatory.
+        </div>
+    </div>
+</body>
+</html>

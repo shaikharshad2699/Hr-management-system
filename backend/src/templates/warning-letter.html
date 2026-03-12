@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page { size: A4; margin: 12mm 16mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; font-size: 9pt; line-height: 1.3; color: #000; }
+        .page { position: relative; padding-bottom: 20mm; }
+        .logo-section { text-align: right; margin-bottom: 15px; }
+        .logo { width: 80px; }
+        .title { text-align: center; font-size: 12pt; font-weight: 700; margin: 12px 0; color: #dc2626; }
+        .date-line { text-align: right; margin-bottom: 10px; font-size: 9pt; }
+        .dear { margin: 10px 0 8px; font-size: 9pt; }
+        p { font-size: 9pt; line-height: 1.3; text-align: justify; margin: 6px 0; }
+        .bold { font-weight: 600; }
+        .red-text { color: #dc2626; font-weight: 600; }
+        .subject-line { margin: 8px 0; font-weight: 600; font-size: 9pt; }
+        .details-section { margin: 10px 0; }
+        .detail-row { display: flex; margin: 3px 0; }
+        .detail-label { width: 120px; font-weight: 600; font-size: 8.5pt; }
+        .detail-value { flex: 1; font-size: 8.5pt; }
+        .warning-box { border: 2px solid #dc2626; padding: 6px; margin: 8px 0; background: #fef2f2; }
+        .warning-box p { margin: 3px 0; font-size: 8.5pt; line-height: 1.2; }
+        .signature-section { margin-top: 15px; }
+        .yours { margin-bottom: 2px; font-size: 9pt; }
+        .company-line { margin: 2px 0; font-size: 9pt; }
+        .stamp-area { margin: 12px 0; height: 40px; }
+        .sign-name { font-weight: 600; margin-top: 2px; font-size: 9pt; }
+        .sign-role { margin-top: 1px; font-size: 9pt; }
+        .sign-date { margin-top: 1px; font-size: 9pt; }
+        .footer { position: absolute; bottom: 6mm; left: 0; right: 0; text-align: center; font-size: 8pt; line-height: 1.1; }
+        .footer-address { color: #6b7280; margin-bottom: 1px; }
+        .footer-contact a { color: #0891b2; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="logo-section">
+            <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo" />
+        </div>
+        
+        <div class="date-line">Date: {{currentDate}}</div>
+        
+        <div class="title">WARNING LETTER</div>
+        
+        <div class="dear">Dear <span class="bold">{{employeeName}}</span>,</div>
+        
+        <div class="subject-line">Subject: <span class="red-text">Formal Warning - Performance/Conduct Issue</span></div>
+        
+        <p>This letter serves as a <span class="red-text">formal warning</span> regarding your conduct and performance at <span class="bold">Broadstairs IT Solutions Private Limited</span>.</p>
+        
+        <div class="details-section">
+            <div class="detail-row">
+                <div class="detail-label">Employee Name:</div>
+                <div class="detail-value">{{employeeName}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Employee ID:</div>
+                <div class="detail-value">{{employeeId}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Designation:</div>
+                <div class="detail-value">{{designation}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Department:</div>
+                <div class="detail-value">{{department}}</div>
+            </div>
+        </div>
+        
+        <div class="warning-box">
+            <p><span class="bold">Reason for Warning:</span></p>
+            <p>It has been brought to our attention that your recent performance/conduct has not met the expected standards of the organization. This includes but is not limited to:</p>
+            <p>• Failure to meet deadlines and deliverables</p>
+            <p>• Non-compliance with company policies</p>
+            <p>• Unprofessional behavior in the workplace</p>
+        </div>
+        
+        <p>This is a <span class="red-text">serious matter</span> and we expect immediate improvement in your performance and adherence to company policies and procedures. You are required to:</p>
+        
+        <p>1. Improve your work performance to meet the required standards<br>
+        2. Comply with all company policies and procedures<br>
+        3. Maintain professional conduct at all times</p>
+        
+        <p>Please note that <span class="red-text">failure to show improvement</span> may result in further disciplinary action, which may include suspension or termination of employment.</p>
+        
+        <p>We trust that you will take this warning seriously and make the necessary improvements. Please acknowledge receipt of this letter by signing and returning a copy.</p>
+        
+        <div class="signature-section">
+            <div class="yours">Yours sincerely,</div>
+            <div class="company-line">For <span class="bold">Broadstairs IT Solutions (OPC) Private Limited</span></div>
+            
+            <div class="stamp-area"></div>
+            
+            <div class="sign-name">{{hrName}}</div>
+            <div class="sign-role">Head – Hr Capital</div>
+            <div class="sign-date">{{currentDate}}</div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-address">Pokale-Mala, Kondhwa Khurd, Behind Welcome Hall, Pune 411048</div>
+            <div class="footer-contact">Ph: 09028822391 | e-mail: <a href="mailto:info@broadstairs.in">info@broadstairs.in</a> | Website: <a href="http://www.broadstairs.in">www.broadstairs.in</a></div>
+        </div>
+    </div>
+</body>
+</html>

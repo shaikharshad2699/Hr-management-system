@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm 14mm 10mm 14mm;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: #000;
+      font-family: Arial, "Arial MT", sans-serif;
+      font-size: 8.5pt;
+      line-height: 1.2;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      padding-bottom: 15mm;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2mm;
+    }
+
+    .logo {
+      width: 75px;
+      height: auto;
+    }
+
+    .date {
+      font-weight: 700;
+      font-size: 8pt;
+    }
+
+    .recipient {
+      margin-bottom: 2mm;
+      font-size: 8pt;
+    }
+
+    .recipient p {
+      margin: 0.2mm 0;
+    }
+
+    .subject {
+      font-weight: 700;
+      margin: 1.5mm 0;
+      font-size: 8pt;
+    }
+
+    p {
+      margin: 1mm 0;
+      text-align: justify;
+      font-size: 8pt;
+    }
+
+    .section-title {
+      font-weight: 700;
+      margin: 1.5mm 0 0.5mm;
+      font-size: 8pt;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1mm 0;
+      font-size: 7.5pt;
+    }
+
+    table, th, td {
+      border: 1px solid #000;
+    }
+
+    th, td {
+      padding: 0.8mm 1.5mm;
+      text-align: left;
+    }
+
+    th {
+      font-weight: 700;
+      background: #f0f0f0;
+    }
+
+    .money-col {
+      text-align: right;
+    }
+
+    .signature {
+      margin-top: 2mm;
+      font-size: 8pt;
+    }
+
+    .signature p {
+      margin: 0.5mm 0;
+    }
+
+    .sign-name {
+      font-weight: 700;
+      margin-top: 5mm;
+    }
+
+    .sign-role {
+      margin-top: 0.3mm;
+    }
+
+    .footer-box {
+      position: absolute;
+      bottom: 1mm;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 7.5pt;
+      line-height: 1.1;
+    }
+
+    .address-line {
+      color: #6aa84f;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="header">
+      <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo" />
+      <div class="date">Date: {{currentDate}}</div>
+    </div>
+
+    <div class="recipient">
+      <p><strong>{{employeeName}}</strong></p>
+      <p>Employee ID: {{employeeId}}</p>
+      <p>Designation: {{designation}}</p>
+    </div>
+
+    <p class="subject"><strong>Subject: Annual Performance Review FY 2024</strong></p>
+
+    <p>Dear {{employeeName}},</p>
+    <p>We are pleased to inform you that effective {{currentDate}}, your Annual Compensation package (Cost to Company) has been revised and will now be <strong>{{annualSalary}}</strong> ({{salaryInWords}}).</p>
+    <p>All other terms and conditions of your employment will remain unchanged. We look forward to your continued contribution in the coming year. Wish you a successful year ahead.</p>
+
+    <p class="section-title">Revised Salary structures can be bifurcated as under:</p>
+    <p class="section-title">Annexure - A</p>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <td colspan="2">{{employeeName}}</td>
+      </tr>
+      <tr>
+        <th>Designation</th>
+        <td colspan="2">{{designation}}</td>
+      </tr>
+      <tr>
+        <th>Business Unit - Location</th>
+        <td colspan="2">{{department}}</td>
+      </tr>
+      <tr>
+        <th>Total CTC</th>
+        <td colspan="2" class="money-col">{{salary}}</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>Compensation Component</th>
+        <th class="money-col">Amount (₹) Per Month</th>
+        <th class="money-col">Amount (₹) Per Annum</th>
+      </tr>
+      <tr>
+        <td>Basic Salary</td>
+        <td class="money-col">{{basicMonthly}}</td>
+        <td class="money-col">{{basicYearly}}</td>
+      </tr>
+      <tr>
+        <td>House Rent Allowance</td>
+        <td class="money-col">{{hraMonthly}}</td>
+        <td class="money-col">{{hraYearly}}</td>
+      </tr>
+      <tr>
+        <td>Conveyance</td>
+        <td class="money-col">{{conveyanceMonthly}}</td>
+        <td class="money-col">{{conveyanceYearly}}</td>
+      </tr>
+      <tr>
+        <td>Medical Allowance</td>
+        <td class="money-col">{{medicalMonthly}}</td>
+        <td class="money-col">{{medicalYearly}}</td>
+      </tr>
+      <tr>
+        <td>Variable Allowance</td>
+        <td class="money-col">{{variableMonthly}}</td>
+        <td class="money-col">{{variableYearly}}</td>
+      </tr>
+      <tr>
+        <td>Personal Allowance</td>
+        <td class="money-col">{{personalMonthly}}</td>
+        <td class="money-col">{{personalYearly}}</td>
+      </tr>
+      <tr>
+        <th>Total Allowances (A)</th>
+        <th class="money-col">{{monthlySalary}}</th>
+        <th class="money-col">{{annualSalary}}</th>
+      </tr>
+      <tr>
+        <th>Deduction (B)</th>
+        <th class="money-col" colspan="2">2,500.00</th>
+      </tr>
+      <tr>
+        <th>Total Fixed Pay (D) = (A-B)</th>
+        <th class="money-col" colspan="2">{{salary}}</th>
+      </tr>
+    </table>
+
+    <p>We look forward to your continuous contribution and wish you a long and fulfilling career with the Company. The revised salary will be credited this month, and arrears, if applicable, from the effective date of the revision, will be paid to you in such a number of subsequent months as the case may be.</p>
+
+    <div class="signature">
+      <p>For {{companyName}}</p>
+      <p class="sign-name">{{hrName}}</p>
+      <p class="sign-role">Head – Human Capital</p>
+    </div>
+
+    <div class="footer-box">
+      <div class="address-line">Pokale-Mala, Kondhwa Khurd, Survey No. 38 Behind Welcome Hall, Pune 411048</div>
+      <div>Ph: 09028822391 | e-mail: info@broadstairs.in | Website: www.broadstairs.in</div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page { size: A4; margin: 15mm 18mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; font-size: 10pt; line-height: 1.4; color: #000; }
+        .logo-section { margin-bottom: 20px; }
+        .logo { width: 80px; }
+        .subject { margin: 15px 0 12px; font-size: 10pt; font-weight: 600; }
+        .dear { margin-bottom: 10px; font-size: 10pt; }
+        p { font-size: 10pt; line-height: 1.4; text-align: justify; margin: 8px 0; }
+        .bold { font-weight: 600; }
+        .signature-section { margin-top: 25px; }
+        .best-wishes { margin-bottom: 3px; }
+        .company-name-sign { font-weight: 600; }
+        .auth-sign { margin-top: 35px; font-weight: 600; font-size: 10pt; }
+        .accept-text { margin: 12px 0 8px; font-size: 9pt; }
+        .sign-lines { display: flex; gap: 40px; margin-bottom: 3px; }
+        .sign-line { flex: 1; border-bottom: 1px solid #000; height: 20px; }
+        .sign-labels { display: flex; gap: 40px; font-size: 9pt; }
+        .sign-labels span { flex: 1; text-align: center; }
+        .footer { margin-top: 20px; text-align: center; font-size: 9pt; line-height: 1.3; }
+        .footer-address { color: #6b7280; }
+        .footer-contact a { color: #0891b2; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="logo-section">
+        <img class="logo" src="{{companyLogo}}" alt="Broadstairs Logo" />
+    </div>
+    
+    <div class="subject">Subject: Internship Opportunity at <span class="bold">Broadstairs IT Solution</span></div>
+    
+    <div class="dear">Dear <span class="bold">{{employeeName}}</span>,</div>
+    
+    <p>We are pleased to inform you that we have selected you for an internship opportunity at <span class="bold">Broadstairs IT Solution</span>. We were impressed with your qualifications, enthusiasm, and eagerness to gain practical experience in the IT industry.</p>
+    
+    <p>During your internship at <span class="bold">Broadstairs IT Solution</span>, you will have the chance to work on exciting projects and collaborate with our team of experienced professionals. We believe this internship will provide you with valuable insights into the IT industry and offer an opportunity to further develop your skills in <span class="bold">Software Development</span>.</p>
+    
+    <p>The internship will begin on <span class="bold">{{joiningDate}}</span>. Your assignment concludes on <span class="bold">{{currentDate}}</span>. You will be working closely with a dedicated mentor who will guide and support you throughout your internship. They will help you familiarise yourself with our company's processes, tools, and technologies, ensuring a smooth transition into your role.</p>
+    
+    <p>We expect you to bring your enthusiasm, dedication, and a strong desire to learn and contribute to our team's success. We encourage you to actively participate in team meetings, brainstorming sessions, and any other collaborative activities that arise during your internship.</p>
+    
+    <p>To confirm your acceptance of this Internship offer, with your acknowledgment and confirmation of your availability for the entire internship duration.</p>
+    
+    <p>We are thrilled to have you join our team and believe this internship will be a mutually beneficial experience. If you have any questions or need further information, please do not hesitate to reach out to us. We look forward to working with you and helping you grow in your professional journey.</p>
+    
+    <p>Congratulations once again, and welcome to Broadstairs IT Solutions.</p>
+    
+    <div class="signature-section">
+        <div class="best-wishes">Best Wishes,</div>
+        <div class="company-name-sign">Broadstairs IT Solutions</div>
+    </div>
+    
+    <div class="auth-sign">Authorised Signatory</div>
+    
+    <div class="accept-text">I accept the above internship offer described in this letter.</div>
+    
+    <div class="sign-lines">
+        <div class="sign-line"></div>
+        <div class="sign-line"></div>
+    </div>
+    <div class="sign-labels">
+        <span>Signature</span>
+        <span>Date</span>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-address">Pokale-Mala, Kondhwa Khurd, Behind Welcome Hall, Pune 411048</div>
+        <div class="footer-contact">Ph: 09028822391 | e-mail: <a href="mailto:info@broadstairs.in">info@broadstairs.in</a> | Website: <a href="http://www.broadstairs.in">www.broadstairs.in</a></div>
+    </div>
+</body>
+</html>

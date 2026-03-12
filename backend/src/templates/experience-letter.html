@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .company-name { font-size: 24px; font-weight: bold; color: #2c3e50; }
+        .title { font-size: 20px; font-weight: bold; margin: 30px 0; text-align: center; text-decoration: underline; }
+        .content { margin: 20px 0; }
+        .signature { margin-top: 80px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-name">{{companyName}}</div>
+        <p>HR Department</p>
+    </div>
+
+    <p style="text-align: right;">Date: {{currentDate}}</p>
+
+    <div class="title">EXPERIENCE CERTIFICATE</div>
+
+    <p>To Whom It May Concern,</p>
+
+    <div class="content">
+        <p>This is to certify that <strong>{{employeeName}}</strong> was employed with {{companyName}} as <strong>{{designation}}</strong> in the <strong>{{department}}</strong> department.</p>
+
+        <p>Period of Employment: <strong>{{joiningDate}}</strong> to <strong>{{currentDate}}</strong></p>
+
+        <p>During the tenure, {{employeeName}} has shown dedication, professionalism, and commitment to work. We found them to be sincere, hardworking, and a valuable team member.</p>
+
+        <p>We wish {{employeeName}} all the best for future endeavors.</p>
+    </div>
+
+    <div class="signature">
+        <p>Sincerely,</p>
+        <p><strong>HR Manager</strong><br>{{companyName}}</p>
+    </div>
+</body>
+</html>
