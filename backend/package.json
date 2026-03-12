@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "build": "echo Backend build completed - no compilation required",
     "dev": "nodemon server.js",
     "start": "node server.js",
     "seed": "node seed.js",
