@@ -7,15 +7,26 @@ const DEFAULT_ADMIN = {
   role: process.env.DEFAULT_ADMIN_ROLE || 'admin',
 };
 
-const ensureDefaultAdmin = async () => {
+const ensureDefaultAdmin = async ({ syncPassword = false } = {}) => {
   const existingAdmin = await User.findOne({ email: DEFAULT_ADMIN.email });
 
-  if (existingAdmin) {
+  if (existingAdmin && !syncPassword) {
     return;
   }
 
-  await User.create(DEFAULT_ADMIN);
-  console.log(`Default admin created: ${DEFAULT_ADMIN.email}`);
+  if (!existingAdmin) {
+    await User.create(DEFAULT_ADMIN);
+    console.log(`Default admin created: ${DEFAULT_ADMIN.email}`);
+    return;
+  }
+
+  existingAdmin.name = DEFAULT_ADMIN.name;
+  existingAdmin.role = DEFAULT_ADMIN.role;
+  existingAdmin.password = DEFAULT_ADMIN.password;
+  await existingAdmin.save();
+  console.log(`Default admin credentials refreshed: ${DEFAULT_ADMIN.email}`);
 };
+
+ensureDefaultAdmin.DEFAULT_ADMIN = DEFAULT_ADMIN;
 
 module.exports = ensureDefaultAdmin;
