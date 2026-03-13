@@ -1,13 +1,32 @@
 import axios from 'axios';
 import { STORAGE_KEYS } from '@/constants';
 
-const rawApiUrl = import.meta.env.VITE_API_URL?.trim();
+const rawApiUrl =
+  import.meta.env.VITE_API_URL?.trim() ||
+  import.meta.env.VITE_API_BASE_URL?.trim();
 
-if (!rawApiUrl) {
-  throw new Error('VITE_API_URL is not defined. Set it in the frontend environment configuration.');
-}
+const isLocalHostname = (hostname: string) =>
+  hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
 
-const API_BASE_URL = rawApiUrl.replace(/\/+$/, '');
+const resolveApiBaseUrl = () => {
+  if (rawApiUrl) {
+    return rawApiUrl.replace(/\/+$/, '');
+  }
+
+  if (typeof window === 'undefined') {
+    throw new Error(
+      'API base URL is not configured. Set VITE_API_URL in the frontend environment configuration.'
+    );
+  }
+
+  if (isLocalHostname(window.location.hostname)) {
+    return 'http://localhost:5000/api';
+  }
+
+  return `${window.location.origin.replace(/\/+$/, '')}/api`;
+};
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
