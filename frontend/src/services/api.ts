@@ -9,7 +9,7 @@ if (!rawApiUrl) {
   );
 }
 
-const API_BASE_URL = rawApiUrl.replace(/\/+$/, '');
+const API_BASE_URL = `${rawApiUrl.replace(/\/+$/, '')}/api`;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,

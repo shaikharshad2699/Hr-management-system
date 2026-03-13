@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { apiClient } from './api';
 
 export interface LoginCredentials {
@@ -25,7 +26,17 @@ export interface AuthResponse {
 
 export const authService = {
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    const response = await apiClient.post('/auth/login', credentials);
+    const apiUrl = import.meta.env.VITE_API_URL?.trim();
+
+    if (!apiUrl) {
+      throw new Error('VITE_API_URL is not configured. Set it in the frontend environment.');
+    }
+
+    const response = await axios.post(`${apiUrl.replace(/\/+$/, '')}/api/auth/login`, credentials, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     return response.data;
   },
 

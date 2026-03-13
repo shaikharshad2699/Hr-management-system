@@ -2,26 +2,16 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-
-const allowedOrigins = (process.env.CLIENT_URL || '')
-  .split(',')
-  .map((origin) => origin.trim())
-  .filter(Boolean);
-
-const corsOptions = {
-  origin(origin, callback) {
-    if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
-      callback(null, true);
-      return;
-    }
-
-    callback(new Error(`CORS blocked for origin: ${origin}`));
-  },
-  credentials: true,
-};
+const clientOrigin =
+  process.env.CLIENT_URL || 'https://hr-management-system-app-phi.vercel.app';
 
 // Middleware
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: clientOrigin,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
