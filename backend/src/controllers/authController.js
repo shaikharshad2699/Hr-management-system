@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const ensureDefaultAdmin = require('../utils/ensureDefaultAdmin');
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -46,12 +45,6 @@ exports.login = async (req, res) => {
 
     let user = await User.findOne({ email }).select('+password');
     let isPasswordValid = user ? await user.comparePassword(password) : false;
-
-    if ((!user || !isPasswordValid) && email === ensureDefaultAdmin.DEFAULT_ADMIN.email) {
-      await ensureDefaultAdmin({ syncPassword: true });
-      user = await User.findOne({ email }).select('+password');
-      isPasswordValid = user ? await user.comparePassword(password) : false;
-    }
 
     if (!user || !isPasswordValid) {
       return res.status(401).json({ success: false, message: 'Invalid credentials' });
