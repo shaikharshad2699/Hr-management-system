@@ -25,12 +25,18 @@ export interface AuthResponse {
 
 export const authService = {
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    const response = await apiClient.post('/auth/login', credentials);
+    const response = await apiClient.post('/auth/login', {
+      email: credentials.email.trim().toLowerCase(),
+      password: credentials.password,
+    });
     return response.data;
   },
 
   register: async (data: RegisterData): Promise<AuthResponse> => {
-    const response = await apiClient.post('/auth/register', data);
+    const response = await apiClient.post('/auth/register', {
+      ...data,
+      email: data.email.trim().toLowerCase(),
+    });
     return response.data;
   },
 };

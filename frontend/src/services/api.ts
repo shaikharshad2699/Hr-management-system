@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { STORAGE_KEYS } from '@/constants';
 
-const rawApiUrl = import.meta.env.VITE_API_URL?.trim() ?? "https://hr-management-system.onrender.com/api";
+const rawApiUrl = import.meta.env.VITE_API_URL?.trim() ?? 'https://hr-management-system.onrender.com';
 
 if (!rawApiUrl) {
   throw new Error(
@@ -9,7 +9,10 @@ if (!rawApiUrl) {
   );
 }
 
-const API_BASE_URL = `${rawApiUrl.replace(/\/+$/, '')}/api`;
+const normalizedApiUrl = rawApiUrl.replace(/\/+$/, '');
+const API_BASE_URL = normalizedApiUrl.endsWith('/api')
+  ? normalizedApiUrl
+  : `${normalizedApiUrl}/api`;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
