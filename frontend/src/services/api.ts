@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { STORAGE_KEYS } from '@/constants';
 
-const rawApiUrl = import.meta.env.VITE_API_URL?.trim();
+const rawApiUrl = import.meta.env.VITE_API_URL?.trim() ?? "https://hr-management-system.onrender.com/api";
 
 if (!rawApiUrl) {
   throw new Error(
